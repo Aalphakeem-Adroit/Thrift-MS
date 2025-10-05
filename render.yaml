@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: thrift_ms-api
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn thrift_ms.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: thrift_ms.settings
+      - key: PYTHON_VERSION
+        value: 3.10
