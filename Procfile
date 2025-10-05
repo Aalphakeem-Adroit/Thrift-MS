@@ -1,0 +1,1 @@
+echo "web: gunicorn thrift_ms.wsgi" > Procfile
