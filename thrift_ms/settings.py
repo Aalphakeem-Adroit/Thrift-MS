@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-19bn5$8qr@aauacm^dgf4)&4*jez%+71ptczdftsv*^_-+r)00
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -80,12 +81,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'thrift_ms',
-        'USER': 'root',
-        'PASSWORD': 'Hakeem.b2@mysql',
+        'USER': '',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default='postgresql://thrift_ms_user:KRjsxwmVcmLvdKh8Lto3RigWMsRwJvs2@dpg-d3hfhtr3fgac739p4hj0-a.oregon-postgres.render.com/thrift_ms',
+#         conn_max_age=600
+#     )
+# }
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
