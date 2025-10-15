@@ -417,4 +417,4 @@ docs: add API documentation and README
 
 ## Credits & License
 
-Built by **Busari Abdulhakeem Tunde** as a capstone project at ALX. Licensed under the MIT License (add a `LICENSE` file if needed).
+Built by **Busari Abdulhakeem Tunde** as a capstone project at ALX. Licensed under the MIT License.
