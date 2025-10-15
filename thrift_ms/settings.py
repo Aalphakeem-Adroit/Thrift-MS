@@ -11,19 +11,25 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+import os
+from dotenv import load_dotenv
+env_path = load_dotenv(os.path.join(BASE_DIR, '.env'))
+load_dotenv(env_path)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-19bn5$8qr@aauacm^dgf4)&4*jez%+71ptczdftsv*^_-+r)00'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-19bn5$8qr@aauacm^dgf4)&4*jez%+71ptczdftsv*^_-+r)00')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.environ.get('DEBUG', '') != 'False'
+
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
@@ -81,8 +87,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'thrift_ms',
-        'USER': '',
-        'PASSWORD': '',
+        'USER': 'root',
+        'PASSWORD': 'Hakeem.b2@mysql',
         'HOST': 'localhost',
         'PORT': '3306',
     }

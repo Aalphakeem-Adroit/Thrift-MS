@@ -46,7 +46,7 @@ This README explains how to set up and run the project locally, how the API is s
 * Record payouts and payout order
 * Dashboard endpoints for members (summary)
 
-### Secondary / Stretch (notes)
+### Secondary / Stretch (future)
 
 * Role-based permissions (Admin vs Member)
 * Email/SMS reminders
@@ -166,9 +166,9 @@ If you are not using `python-decouple`, you can use `os.getenv()` instead — st
 If you haven't created the database yet, do it in MySQL shell or via a GUI:
 
 ```sql
-CREATE DATABASE thrift_management_system CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE thrift_ms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'thrift_user'@'localhost' IDENTIFIED BY 'secure_password_here';
-GRANT ALL PRIVILEGES ON thrift_management_system.* TO 'thrift_user'@'localhost';
+GRANT ALL PRIVILEGES ON thrift_ms.* TO 'thrift_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
@@ -219,8 +219,6 @@ Open the API root: `http://127.0.0.1:8000/api/`
 
 > **Base path**: `http://127.0.0.1:8000/api/`
 
-> Replace with your paths if you used another router prefix.
-
 ### Accounts & Authentication
 
 * `POST /api/accounts/register/` — Register new user (`AllowAny`)
@@ -229,20 +227,26 @@ Open the API root: `http://127.0.0.1:8000/api/`
 
     ```json
     {
-      "username": "Alphakeem",
-      "password": "supersecure123",
-      "email": "john@example.com",
-      "phone": "08123456789"
+      "username": "Admin",
+      "email": "admin@email.com",
+      "password": "mypasskey@123",
+      "phone": "09033023139",
+      "account_number": "9033023139",
+      "bank_name": "Opay",
+      "account_name": "Busari Akeem Tunde"
     }
     ```
 
-* `POST /api/token/` (SimpleJWT) — Obtain JWT pair (if you use SimpleJWT)
+* `POST /api/accounts/token/` (SimpleJWT) — Obtain JWT pair 
 
-  * Body: `{ "username": "Alphakeem", "password": "supersecure123" }`
-
-* `POST /api/api-token-auth/` (DRF TokenAuth) — Obtain token (if you use DRF TokenAuth)
-
-  * Body: `{ "username": "Alphakeem", "password": "supersecure123" }`
+  * Body: 
+  
+  ```json
+  {
+    "username": "Admin",
+    "password": "mypasskey@123"
+  }
+  ```
 
 * `GET /api/accounts/users/` — List all users (Admin only)
 
@@ -284,7 +288,13 @@ Open the API root: `http://127.0.0.1:8000/api/`
 * `GET /api/contributions/` — List contributions
 * `POST /api/contributions/` — Record a contribution
 
-  * Example: `{ "member": 1, "amount": "200000.00", "status": "paid" }`
+  * Example: 
+  ```json
+  { "member": 1,
+    "amount": "200000.00",
+    "status": "paid"
+  }
+  ```
 * `GET /api/contributions/{id}/` — Contribution detail
 * `PATCH /api/contributions/{id}/` — Edit contribution (admin only)
 * `DELETE /api/contributions/{id}/` — Delete contribution (admin only)
@@ -294,7 +304,13 @@ Open the API root: `http://127.0.0.1:8000/api/`
 * `GET /api/payouts/` — List payouts
 * `POST /api/payouts/` — Record a payout
 
-  * Example: `{ "member": 1, "amount": "2000000.00", "order": 1 }`
+  * Example: 
+  ```json
+  { "member": 1,
+    "amount": "2000000.00",
+    "order": 1 
+  }
+  ```
 * `GET /api/payouts/{id}/` — Payout detail
 * `PATCH /api/payouts/{id}/` — Update payout (admin only)
 * `DELETE /api/payouts/{id}/` — Delete payout (admin only)
@@ -384,34 +400,6 @@ Share the HTTPS URL Ngrok provides. Keep in mind the tunnel is temporary and clo
 * **`Authentication credentials were not provided`** - include the correct `Authorization` header.
 * **Pylance warnings for `decouple` or `dj_database_url`** - install packages in your virtualenv and reload VS Code.
 * **Migrations errors after switching user model** - define `AUTH_USER_MODEL` before creating initial migrations; if necessary, reset migrations carefully.
-
----
-
-## Recommended commits / changelog note
-
-Use clear, conventional commit messages. Examples (pick those that match the work you completed):
-
-```
-chore: initialize Django project thrift_ms
-feat(accounts): extend AbstractUser with phone and bank fields
-feat(accounts): add registration endpoint and serializer
-feat(thrift): add ThriftGroup model and CRUD endpoints
-feat(membership): add Membership model and join endpoint
-feat(contribution): add Contribution model and record endpoint
-feat(payout): add Payout model and record endpoint
-fix(auth): token/JWT login issues and permission fixes
-docs: add API documentation and README
-```
-
----
-
-## Next steps (suggestions)
-
-* Add tests for critical endpoints (registration, contribution, payout flows).
-* Add role-based permissions (e.g., `IsGroupAdmin` custom permission class).
-* Add automated email/SMS reminders (Twilio / SMTP).
-* Integrate payment provider (Paystack / Flutterwave) for actual online contributions.
-* Consider deploying with PostgreSQL when moving to a hosted service.
 
 ---
 
