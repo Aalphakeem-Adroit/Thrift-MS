@@ -243,16 +243,14 @@ Open the API root: `http://127.0.0.1:8000/api/`
   
   ```json
   {
-    "username": "Admin",
-    "password": "mypasskey@123"
+    "username": "Alphakeem",
+    "password": "ragbatuqalbee"
   }
   ```
 
 * `GET /api/accounts/users/` — List all users (Admin only)
 
 * `GET /api/accounts/me/` — Retrieve logged-in user profile (Authenticated)
-
-* `PATCH /api/accounts/me/` — Update logged-in user profile (Authenticated)
 
 ### Thrift Groups
 
@@ -263,8 +261,8 @@ Open the API root: `http://127.0.0.1:8000/api/`
 
     ```json
     {
-      "name": "Two Million Pack",
-      "contribution_amount": "200000.00",
+      "name": "Six Million Pack",
+      "contribution_amount": "600000.00",
       "cycle": "monthly",
       "admin": 1
     }
@@ -290,8 +288,9 @@ Open the API root: `http://127.0.0.1:8000/api/`
 
   * Example: 
   ```json
-  { "member": 1,
+  { "member": 3,
     "amount": "200000.00",
+    "date": "2025-10-05",
     "status": "paid"
   }
   ```

@@ -88,7 +88,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'thrift_ms',
         'USER': 'root',
-        'PASSWORD': 'Hakeem.b2@mysql',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
