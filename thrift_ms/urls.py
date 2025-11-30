@@ -25,9 +25,9 @@ def redirect_to_api(request):
 
 urlpatterns = [
     path("", redirect_to_api),
+    path('admin/', admin.site.urls),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-    path('admin/', admin.site.urls),
     path('api/', include('thrift.urls')),
     path('api/accounts/', include('accounts.urls')),
 ]
