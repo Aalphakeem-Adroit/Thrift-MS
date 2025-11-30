@@ -114,6 +114,8 @@ DATABASES = {
 # }
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.AllowAny',
     ),
@@ -123,6 +125,12 @@ REST_FRAMEWORK = {
     )
 }
 
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Thrift-MS API',
+    'DESCRIPTION': 'Clean and fully documented REST API for Thrift-MS project',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

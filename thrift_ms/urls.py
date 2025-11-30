@@ -18,12 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 def redirect_to_api(request):
     return redirect("/api/accounts/")
 
 urlpatterns = [
     path("", redirect_to_api),
+    path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('admin/', admin.site.urls),
     path('api/', include('thrift.urls')),
     path('api/accounts/', include('accounts.urls')),
