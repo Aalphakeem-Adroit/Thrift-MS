@@ -1,1 +1,1 @@
-echo "web: gunicorn thrift_ms.wsgi" > Procfile
+web: gunicorn thrift_ms.wsgi:application
