@@ -4,6 +4,7 @@ djangorestframework==3.16.1
 djangorestframework_simplejwt==5.5.1
 mysql-connector-python==9.5.0
 mysqlclient==2.2.7
+gunicorn
 psycopg2-binary==2.9.11
 PyJWT==2.10.1
 python-dotenv==1.2.1
