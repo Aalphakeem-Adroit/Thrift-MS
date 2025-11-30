@@ -100,6 +100,12 @@ DATABASES['default']['OPTIONS'] = {
     'sslmode': os.getenv('DB_SSLMODE', 'require')
 }
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
+
 # DATABASES = {
 #     'default': dj_database_url.config(
 #         default='postgresql://thrift_ms_user:KRjsxwmVcmLvdKh8Lto3RigWMsRwJvs2@dpg-d3hfhtr3fgac739p4hj0-a.oregon-postgres.render.com/thrift_ms',
