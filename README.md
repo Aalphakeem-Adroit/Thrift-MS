@@ -66,19 +66,20 @@ This README explains how to set up and run the project locally, how the API is s
 
 ---
 
-## Project structure (example)
+## Project structure
 
 ```
 thrift_ms/
 ├── accounts/                  # custom user app (models, serializers, views)
-├── thrift/                    # thrift groups, memberships, contributions, payouts
-├── dashboard/                 # (coming) user dashboard and reporting endpoints
+├── thrift/                    # thrift groups, memberships, contributions, payouts endpoints
 ├── payments/                  # (future) payment integrations
 ├── thrift_ms/                 # django project settings, wsgi, urls
 ├── manage.py
 ├── requirements.txt
-├── Procfile (optional)
-├── runtime.txt (optional)
+├── Procfile
+├── render.yaml
+├── .gitignore
+├── LICENSE
 └── README.md
 ```
 
