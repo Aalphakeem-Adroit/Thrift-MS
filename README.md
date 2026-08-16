@@ -243,8 +243,8 @@ Open the API root: `http://127.0.0.1:8000/api/`
   
   ```json
   {
-    "username": "Alphakeem",
-    "password": "ragbatuqalbee"
+    "username": "username",
+    "password": "password"
   }
   ```
 
